@@ -1,0 +1,636 @@
+/* ==========================================================================
+   VALKA ESTUDIO - DESIGN SYSTEM & GLOBAL STYLES
+   Arquitectura que transforma. Espacios que cuidan.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-primary: #F9F8F5;
+  --bg-surface: #FFFFFF;
+  --bg-secondary: #F3F0EB;
+  --bg-secondary-alt: #EAE6DF;
+  --bg-card: #FFFFFF;
+  --bg-dark: #191816;
+  --bg-dark-accent: #262420;
+  
+  --text-primary: #1C1B19;
+  --text-secondary: #5A5650;
+  --text-muted: #847E76;
+  --text-light: #F9F8F5;
+  --text-light-muted: #B8B3AB;
+
+  --border-subtle: #E5E1D8;
+  --border-medium: #D2CDC2;
+  --border-dark: #383530;
+  
+  --accent-gold: #9E8C6C;
+  --accent-olive: #565949;
+  --accent-terracotta: #A46D54;
+  
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-subtle: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --shadow-sm: 0 2px 8px rgba(28, 27, 25, 0.04);
+  --shadow-md: 0 8px 24px rgba(28, 27, 25, 0.06);
+  --shadow-lg: 0 16px 40px rgba(28, 27, 25, 0.10);
+  --shadow-dark: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  --container-max: 1380px;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-weight: 400;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+/* Editorial Brand Logo */
+.brand-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.brand-logo .logo-valka {
+  font-family: var(--font-serif);
+  font-size: 1.52rem;
+  letter-spacing: 0.30em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-right: -0.30em;
+  display: block;
+  text-align: center;
+  transition: color var(--transition-fast);
+}
+
+/* SVG Logo — A sin travesaño */
+.brand-logo .logo-valka-svg {
+  display: block;
+  height: 1.52rem;
+  width: auto;
+  color: var(--text-primary);
+  overflow: visible;
+  transition: color var(--transition-fast);
+}
+
+.brand-logo .logo-estudio {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.44em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  margin-right: -0.44em;
+  display: block;
+  text-align: center;
+  width: 100%;
+  transition: color var(--transition-fast);
+}
+
+/* White Brand Logo inside Hero */
+.brand-logo.logo-white .logo-valka,
+.brand-logo.logo-white .logo-valka-svg,
+.hero-header-bar .brand-logo .logo-valka,
+.hero-header-bar .brand-logo .logo-valka-svg {
+  color: #FFFFFF !important;
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.45));
+}
+
+.brand-logo.logo-white .logo-estudio,
+.hero-header-bar .brand-logo .logo-estudio {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.brand-logo.logo-light .logo-valka { color: var(--text-light); }
+.brand-logo.logo-light .logo-valka-svg { color: var(--text-light); }
+.brand-logo.logo-light .logo-estudio { color: var(--text-light-muted); }
+
+/* Subpage Dedicated Header */
+.subpage-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(249, 248, 245, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(229, 225, 216, 0.8);
+  padding: 0.6rem 0;
+}
+
+.subpage-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.subpage-header .brand-logo .logo-valka {
+  color: var(--text-primary);
+}
+
+.subpage-header .brand-logo .logo-estudio {
+  color: var(--text-muted);
+}
+
+.subpage-header .menu-toggle-btn {
+  color: var(--text-primary);
+}
+
+.subpage-header .menu-toggle-btn .menu-bars span {
+  background-color: var(--text-primary);
+}
+
+/* Menu Toggle Button (Mockup: MENU =) */
+.menu-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  padding: 0.5rem 0.6rem;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.menu-toggle-btn.menu-btn-white,
+.hero-header-bar .menu-toggle-btn {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.menu-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+.menu-toggle-btn .menu-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5px;
+  width: 20px;
+}
+
+.menu-toggle-btn .menu-bars span {
+  display: block;
+  width: 100%;
+  height: 1.8px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: background-color var(--transition-fast);
+}
+
+.menu-toggle-btn.menu-btn-white .menu-bars span,
+.hero-header-bar .menu-toggle-btn .menu-bars span {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* Fullscreen Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-primary);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.menu-close-btn {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.menu-close-btn:hover {
+  transform: rotate(90deg);
+  opacity: 0.7;
+}
+
+.menu-overlay-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.menu-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  text-align: center;
+}
+
+.menu-link-item a {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  position: relative;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.menu-link-item a:hover {
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.menu-link-item a.active {
+  font-style: italic;
+  color: var(--accent-gold);
+}
+
+.menu-overlay-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.menu-footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu-footer-social a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.menu-footer-social a:hover {
+  opacity: 0.6;
+}
+
+/* Breadcrumbs (Subpages) */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.breadcrumbs a {
+  color: var(--text-secondary);
+}
+
+.breadcrumbs a:hover {
+  color: var(--text-primary);
+}
+
+.breadcrumbs .separator {
+  color: var(--border-medium);
+}
+
+/* Global Footer Strip (as seen in Mockup Bottom) */
+.global-footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 1.6rem 0;
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-ticker {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  flex: 1;
+}
+
+.footer-ticker span {
+  margin: 0 0.45rem;
+}
+
+.footer-contact-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+}
+
+.footer-contact-info a:hover {
+  color: var(--text-primary);
+}
+
+.footer-contact-info .footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+/* Buttons and Links */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  border: 1px solid var(--bg-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--bg-dark-accent);
+  color: var(--text-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+  background-color: var(--bg-surface);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  position: relative;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.link-arrow:hover {
+  gap: 0.8rem;
+  color: var(--accent-gold);
+}
+
+.link-arrow-light {
+  color: var(--text-light);
+}
+
+.link-arrow-light:hover {
+  color: #FFFFFF;
+}
+
+/* Views Management */
+.view-section {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.view-section.active-view {
+  display: block;
+  opacity: 1;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-dark);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+  pointer-events: auto;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating WhatsApp Quick Action Button */
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transition: all var(--transition-fast);
+}
+
+.whatsapp-float-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-float-btn svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .header-nav {
+    display: none;
+  }
+  
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .footer-ticker {
+    order: 2;
+    line-height: 1.8;
+  }
+
+  .footer-contact-info {
+    order: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .menu-overlay-header,
+  .menu-overlay-footer {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .menu-footer-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
